@@ -1,0 +1,17 @@
+html{
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+body{
+    margin: 0;
+}
+
+.box01{
+    width: 200px;
+    background: salmon;
+    margin: 30px;
+    padding: 50px;
+    border: solid 10px yellow;
+    border-radius: 10px;
+}

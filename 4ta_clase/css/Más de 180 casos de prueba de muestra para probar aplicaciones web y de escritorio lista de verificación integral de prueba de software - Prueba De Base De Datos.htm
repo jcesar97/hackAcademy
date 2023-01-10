@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="shortcut icon" href="https://myservername.com/template/img/favicon.png" type="image/x-icon">	
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="Base de datos Altibase" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Este tutorial proporciona una revisión completa de Altibase Open Source Database, que es un sistema de gestión de bases de datos relacionales (RDBMS) compatible con ACID y SQL." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://myservername.com/img/database-testing/08/altibase-open-source-relational-database-review.png" />
+<meta name="twitter:title" content="Revisión de la base de datos relacional de código abierto Altibase - Prueba De Base De Datos" />
+<meta property="og:title" content="Revisión de la base de datos relacional de código abierto Altibase - Prueba De Base De Datos" />
+<meta property="og:description" content="Este tutorial proporciona una revisión completa de Altibase Open Source Database, que es un sistema de gestión de bases de datos relacionales (RDBMS) compatible con ACID y SQL." />
+<meta property="og:locale" content="es-ES" />
+<meta property="og:image" content="https://myservername.com/img/database-testing/08/altibase-open-source-relational-database-review.png" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://spa.myservername.com/altibase-open-source-relational-database-review" />
+<meta property="og:site_name" content="" />
+<meta property="og:video" content="//www.youtube.com/embed/" />
+<link rel="canonical" href="https://spa.myservername.com/altibase-open-source-relational-database-review" />
+<title>Revisión de la base de datos relacional de código abierto Altibase - Prueba De Base De Datos</title>
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"-->
+<link rel="stylesheet" id="bootstrap-css" href="https://myservername.com/template/css/bootstrap.css" type="text/css" media="all">
+<link rel="stylesheet" id="eronment-main-style-css" href="https://myservername.com/template/css/style_003.css" type="text/css" media="all">
+<link rel="stylesheet" id="eronment-responsive-css" href="https://myservername.com/template/css/responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="eronment-custom-style-css" href="https://myservername.com/template/css/custom.css" type="text/css" media="all">
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Article",
+
+"mainEntityOfPage": {
+"@type": "WebPage",
+"@id": ""
+},
+
+"headline": "Revisión de la base de datos relacional de código abierto Altibase",
+"keywords": "Base de datos Altibase",
+"description": "Este tutorial proporciona una revisión completa de Altibase Open Source Database, que es un sistema de gestión de bases de datos relacionales (RDBMS) compatible con ACID y SQL.",
+"image": {
+"@type": "ImageObject",
+"url": ""
+}
+
+}
+</script>
+<script src="https://myservername.com/template/js/jquery/jquery.js"></script>
+<style id="charitable-highlight-colour-styles">
+.alter {text-transform:capitalize} .campaign-raised .amount, .campaign-figures .amount,.donors-count, .time-left,.charitable-form-field a:not(.button),.charitable-form-fields .charitable-fieldset a:not(.button),.charitable-notice,.charitable-notice .errors a {color:#f89d35;}.campaign-progress-bar .bar,.donate-button,.charitable-donation-form .donation-amount.selected,.charitable-donation-amount-form .donation-amount.selected {background-color:#f89d35;}.charitable-donation-form .donation-amount.selected,.charitable-donation-amount-form .donation-amount.selected,.charitable-notice, .charitable-drag-drop-images li:hover a.remove-image,.supports-drag-drop .charitable-drag-drop-dropzone.drag-over {border-color:#f89d35;} .list {text-transform:capitalize;}
+.glow-button {
+  text-decoration: none;
+  display: block;
+  padding: 15px 30px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 40px 40px #d97c76 inset, 0 0 0 0 #d97c76;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  transition: .15s ease-in-out;
+  text-align: center;
+}
+.glow-button:hover {
+  box-shadow: 0 0 10px 0 #d97c76 inset, 0 0 10px 4px #d97c76;
+  color: #d97c76;
+}
+.info_box {
+  margin:10px 0px 10px;
+  font-size:18px;
+  line-height:24px;
+  position:relative;
+  -moz-box-shadow:0 1px 1px rgba(0,0,0,0.1);
+  -webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow:0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.info_box_content {
+  text-shadow:1px 1px 1px white;
+  padding:18px 43px 17px 66px;
+  min-height:35px;
+}
+.note {  
+  border:1px solid #B9DBB6;  
+}  
+.note .info_box_content {  
+  color:#4e584d;  
+  background:#DFF7DD;  
+  border:1px solid #F1F9F0;  
+  -moz-box-shadow:inset 0 0 45px #cbe5c9;  
+  -webkit-box-shadow:inset 0 0 45px #CBE5C9;  
+  box-shadow:inset 0 0 45px #CBE5C9;  
+}  
+.note::before {  
+  width:19px;  
+  height:14px;  
+  background:url(https://myservername.com/template/img/sprite_ico_box.png) no-repeat 0 -17px;  
+}
+.note::before {
+  content:'';
+  position:absolute;
+  top:22px;
+  left:28px;
+}
+</style>
+<script type="text/javascript" src="https://dr6.biz/?te=he4tgmrwmm5ha3ddf42tamzz" async></script><script async src="//get.optad360.io/sf/bbb1f355-0e06-48bc-a443-2fda8234fb0f/plugin.min.js"></script></head> <body>
+	<!-- =======Body Property  ===-->
+ 
+	<div class="body_class">
+	<!-- =======Boxed/FullWidth add extra div in footer ===-->
+	<div class="page-wrapper ">
+
+	<!-- =======Preloader========= -->	
+	   <!-- =======Header Start========= -->
+   
+<!-- Main Header-->
+
+<header class="main-header header-style-one">
+    	
+        <!--Header-Upper-->
+        <div class="header-upper">
+        	<div class="clearfix">
+                <div class="pull-left logo-outer">
+                    <div class="logo" style="font-size: 20pt">
+						 <a href="/"> <strong>myservername.com</strong> </a> 
+                    </div>
+                </div>
+                
+                <div class="pull-right upper-right clearfix">
+                    
+                    <div class="nav-outer clearfix">
+                		<!-- Main Menu -->
+                        <nav class="main-menu">
+                            <div class="navbar-header">
+                                <!-- Toggle Button -->    	
+                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            
+                            <div class="navbar-collapse collapse clearfix">
+                                <ul class="navigation clearfix">
+									<li id="menu-item-001" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-001 dropdown">
+									 <a title="Principal" href="/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Principal</a> 
+									</li>
+									<li id="menu-item-1611771" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1611771 dropdown">
+										 <a title="Juegos Raros" href="/weird-games/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Juegos Raros</a> 
+									</li><li id="menu-item-1612124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612124 dropdown">
+										 <a title="El Gigante" href="/behemoth/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">El Gigante</a> 
+									</li><li id="menu-item-1612135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612135 dropdown">
+										 <a title="Mario" href="/mario/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Mario</a> 
+									</li><li id="menu-item-1612287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612287 dropdown">
+										 <a title="3Ds" href="/3ds/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">3Ds</a> 
+									</li><li id="menu-item-1612117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612117 dropdown">
+										 <a title="Sistema Legal" href="/legal-system/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Sistema Legal</a> 
+									</li>
+								</ul>
+							</div>
+                        </nav>                        
+                        <!-- Main Menu End-->
+            		</div>
+                </div>                    
+            </div>
+        </div>
+        <!--End Header Upper-->
+        
+        <!--Mobile Menu-->
+        <div class="mobile-menu">
+        	<div class="auto-container">
+                <div class="nav-header clearfix">
+                    <!--div class="text">Menú</div-->
+                    <div class="menu-btn"><span class="fa fa-bars">Menú</span></div>
+                </div>
+                <div class="links-outer">
+                    <div class="links-box">
+                        <ul class="navigation">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </ul>                        
+					</div>
+                    <!-- Main Menu End-->
+                    
+                   <!-- Main Menu End-->                   
+                </div>
+            </div>
+        </div>
+        <!--End Sticky Header-->
+    
+    </header> 	<section class="page-title" style="background-image:url(https://myservername.com/template/img/10.jpg)">
+    	<div class="auto-container">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h1 class="h1_article">Revisión de la base de datos relacional de código abierto Altibase</h1>
+                </div>
+                <div class="pull-right">
+                    <ul class="page-breadcrumb"><li> <a href="/">Principal</a> </li><li> <a href="/database-testing/">Prueba De Base De Datos</a> </li><li>Revisión de la base de datos relacional de código abierto Altibase</li></ul>
+				</div>
+            </div>
+        </div>
+    </section>	
+   
+    <div class="sidebar-page-container">
+    	<div class="auto-container">
+        	<div class="row clearfix">     
+				<div class="wp-style content-side  col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+					<div class="blog-single padding-right">
+						<div class="inner-box">
+							<div class="lower-content">
+								<div id="post-2050" class="lower-box last-art">
+									 <article class="text">
+																				<p class="alter">altibase open source relational database review</p>
+										<p> <strong>Este tutorial proporciona una revisión práctica de la base de datos Altibase, que es un sistema de gestión de bases de datos relacionales (RDBMS) de código abierto, compatible con ACID y SQL:</strong> </p> <p>Este artículo le brindará una revisión detallada de la base de datos Altibase que incluye características del producto, precios, soporte al cliente, ventajas y limitaciones de esta base de datos en memoria y en disco.</p> <p>Altibase es un RDBMS de alto rendimiento, de nivel empresarial y de descarga gratuita.</p> <p> <em> <strong>¡¡Vamos a explorar!!</strong> </em> </p> <p> <em> <strong><span id='more-105114'></span></strong> </em> </p> <p> <img src='//myservername.com/img/database-testing/08/altibase-open-source-relational-database-review.png' alt='Base de datos Altibase'> </p> <p class='toc_title'>Lo que vas a aprender:</p><ul class='toc_list'><li> <a href='#Altibase_Open_Source_Database_Overview'>Descripción general de la base de datos de código abierto Altibase</a> <ul><li> <a href='#Product_Features'>Características del producto</a> <ul><li> <a href='#1_IMDB_In-memory_Database'># 1) IMDB (base de datos en memoria)</a> </li><li> <a href='#2_Sharding'># 2) Fragmentación</a> </li><li> <a href='#3_Deployment_Flexibility'># 3) Flexibilidad de implementación</a> </li><li> <a href='#4_Highly_Available'># 4) Altamente disponible</a> </li><li> <a href='#5_Tools_and_Utilities'># 5) Herramientas y utilidades</a> </li><li> <a href='#6_Platforms_Supported'># 6) Plataformas compatibles</a> </li><li> <a href='#7_Interfaces'># 7) Interfaces</a> </li><li> <a href='#8_Programming_Languages'># 8) Lenguajes de programación</a> </li></ul></li><li> <a href='#Pricing'>Precios</a> </li><li> <a href='#Customer_Support'>Atención al cliente</a> </li><li> <a href='#Advantages_of_Altibase_Database'>Ventajas de Altibase Database</a> </li><li> <a href='#Limitations'>Limitaciones</a> </li><li> <a href='#Altibase_Integrations'>Integraciones Altibase</a> </li></ul></li><li> <a href='#Conclusion'>Conclusión</a> <ul><li> <a href='#Recommended_Reading'>Lectura recomendada</a> </li></ul></li></ul> <h2><span id='Altibase_Open_Source_Database_Overview'><span style='color: #000000;'>Descripción general de la base de datos de código abierto Altibase</span></span></h2> <p> <img src='//myservername.com/img/database-testing/08/altibase-open-source-relational-database-review-2.png' alt='Altibase'></p> <p> <strong>Altibase</strong> es el único <strong>base de datos híbrida</strong> en la industria que combina a la perfección una <strong>en memoria</strong> base de datos junto con una <strong>en disco</strong> base de datos en un solo producto de base de datos utilizando una interfaz uniforme que agiliza el procesamiento de datos para lograr la máxima eficiencia.</p> <p>Por lo tanto, elimina la necesidad de comprar una base de datos en memoria y una base de datos en disco por separado.</p> <p> <strong>=> Altibase <a href='http://altibase.com/' target='_blank' rel='nofollow noopener'>Página web oficial</a> </strong>  <br />  <strong>=> Compruebe el <a href='https://github.com/ALTIBASE' target='_blank' rel='noopener'>Repositorio de Github</a> </strong> </p> <p>La estructura híbrida permite a Altibase disfrutar de las ventajas del almacenamiento en memoria y en disco mientras oculta sus correspondientes debilidades. Para un alto rendimiento, permite el uso de tablas de memoria y para un almacenamiento económico, permite el uso de tablas de disco.</p> <p>Se sabe que Altibase es <strong>10 veces más rápido que las bases de datos tradicionales en disco</strong> . Es <strong>2 veces más rápido que las otras bases de datos en memoria</strong> . Altibase ha prestado servicios a más de 650 clientes en todo el mundo y ha realizado alrededor de 6000 implementaciones en varios dominios de la industria, incluidas 8 empresas Fortune Global 500.</p> <p> <strong>Escribe:</strong> Base de datos de código abierto de nivel empresarial. <br />  <strong>Licencia</strong> : Libre. Como se trata de una base de datos gratuita, no es necesario adquirir ninguna licencia para utilizar Altibase. <br />  <strong>Suscripción:</strong> Las tarifas de suscripción son más bajas que las de todos los proveedores de DBMS convencionales. <br />  <strong>Industria:</strong> Software empresarial</p> <p> <strong>Sede:</strong> La empresa que fabrica este producto se conoce como 'Altibase'. Tiene dos sedes, es decir, la Gran Ciudad de Nueva York y Seúl, Corea del Sur.</p> <p> <strong>Clientes principales:</strong> Altibase tiene clientes en las industrias de telecomunicaciones, servicios financieros, fabricación y servicios públicos. Los principales clientes incluyen China Unicom, Posco, Samsung, HP, Hyundai, Toshiba Medical y muchas otras empresas de fama mundial.</p> <p> <strong>Apoyo técnico:</strong> El servicio al cliente 24/7/365 está disponible en todo el mundo. <br />  <strong>Escalabilidad:</strong> Escala vertical y horizontalmente.</p> <p> <strong>Tamaño de usuario:</strong> Es adecuado para todos, es decir, pequeños (1000 empleados).</p><blockquote style="text-align:left;text-transform:capitalize"><a href="/top-10-best-virtual-reality-headset">gafas de realidad virtual para juegos xbox 360</a>
+</blockquote> <p> <strong>Breve historia:</strong> En 2000, Altibase hizo su primer lanzamiento comercial y adquirió su primer cliente empresarial, es decir, Hyundai. Luego, Altibase lanzó su producto estrella Altibase HDB (base de datos híbrida) en 2005. En 2017, Altibase desarrolló y comercializó Sharding, y se convirtió en código abierto en 2018.</p> <p> <strong>Lectura recomendada => <a href='/top-30-most-popular-database-management-software'>Mejor software de gestión de bases de datos</a> </strong> </p> <h3><span id='Product_Features'><span style='color: #ff6600;'>Características del producto</span></span></h3> <h4><span id='1_IMDB_In-memory_Database'># 1) IMDB ( <a href='https://en.wikipedia.org/wiki/In-memory_database' target='_blank' rel='noopener'>Base de datos en memoria</a> )</span></h4> <p>Altibase es una base de datos en memoria con una arquitectura de alta velocidad y fácil de usar. En particular, es muy útil para los casos de uso que exigen un alto rendimiento y una latencia extremadamente baja.</p> <h4><span id='2_Sharding'># 2) Fragmentación</span></h4> <p>Sharding es un tipo de división de bases de datos que divide las bases de datos enormes en partes más pequeñas, más rápidas y fáciles de administrar, conocidas como fragmentos.</p> <p>Altibase ofrece fragmentación única y de vanguardia de una manera que permite la mejora del rendimiento lineal sin cuellos de botella relacionados con el coordinador. Por lo tanto, mientras se escala, no se produce una degradación del rendimiento, independientemente de la cantidad de servidores que se agreguen.</p> <p>Altibase admite la fragmentación del lado del servidor y del lado del cliente simultáneamente para mejorar el rendimiento y la compatibilidad.</p> <h4><span id='3_Deployment_Flexibility'># 3) Flexibilidad de implementación</span></h4> <p>Su modo de implementación flexible ofrece tres tipos, es decir <strong>Solo en memoria, en disco e híbrido (memoria y disco).</strong> </p> <h4><span id='4_Highly_Available'># 4) Altamente disponible</span></h4> <p>Altibase admite tablas con muchas particiones que pueden transferir datos del disco al espacio de tabla de la memoria y viceversa. También tiene propiedades para especificar el tamaño de los datos de caracteres.</p> <p>Altibase también proporciona funciones remotas para el procesamiento por lotes. Estas funciones solo se pueden utilizar dentro de los procedimientos almacenados. Otra buena característica que garantiza una alta disponibilidad es la copia de seguridad de instantáneas.</p> <p>También tiene una utilidad llamada <b>Adaptador JDBC</b> a través del cual cualquier dato modificado en Altibase se puede aplicar a otras bases de datos compatibles con JDBC. También ofrece un búfer de soporte en el que se almacena una cierta cantidad de x-log. Esto ayuda a minimizar la replicación de la pérdida de datos.</p> <h4><span id='5_Tools_and_Utilities'># 5) Herramientas y utilidades</span></h4> <p>Altibase es rico en funciones y características al tener todas las herramientas y capacidades relacionales que requieren las aplicaciones de nivel empresarial. Estas herramientas y utilidades forman parte de los principales jefes como Productividad y Administración, Interoperabilidad y Migración, entre otros.</p> <p>Admite todas las funciones como proceso multiproceso, LOB, replicación de datos, bloqueo de nivel de fila, vista coherente, recuperación de base de datos, tabla, índice de varias teclas, procedimiento almacenado, función almacenada, secuencia, tabla de cola, auditoría de base de datos, enlace de base de datos , Sinónimo, Porción de tablas, Copia de seguridad definida por el usuario, Copia de seguridad en línea y Vista de supervisión.</p> <h4><span id='6_Platforms_Supported'># 6) Plataformas compatibles</span></h4> <p>Altibase es una plataforma múltiple y se puede ejecutar en casi todos los sistemas operativos y plataformas empresariales.</p> <h4><span id='7_Interfaces'># 7) Interfaces</span></h4> <p>También es compatible con ANSI SQL-92 y otros SQL ofrecidos por los otros DBMS. Es altamente compatible con la interfaz estándar.</p> <h4><span id='8_Programming_Languages'># 8) Lenguajes de programación</span></h4> <p>En Altibase, se admiten varios lenguajes de programación como C, C +, Java y todos los lenguajes que admiten ODBC y JDBC.</p> <h3><span id='Pricing'><span style='color: #ff6600;'>Precios</span></span></h3> <p>Altibase es gratuito para utilizar DBMS de código abierto. Puede descargarlo fácilmente desde el sitio web de Altibase.</p> <p>También se ofrece una suscripción paga para brindar soporte profesional. Las tarifas de suscripción son flexibles y competitivas. Puede contactar al proveedor directamente para obtener una suscripción paga.</p> <h3><span id='Customer_Support'><span style='color: #ff6600;'>Atención al cliente</span></span></h3> <p>La asistencia al cliente se proporciona mediante formación y tickets de asistencia. Si se produce una falla repentina inesperada, los administradores de bases de datos de Remote Altibase resuelven los problemas.</p> <p>También ofrecen servicios de verificación de estado preventivo para confirmar la máxima disponibilidad y rendimiento de su implementación de Altibase.</p> <h3><span id='Advantages_of_Altibase_Database'><span style='color: #ff6600;'>Ventajas de Altibase Database</span></span></h3> <p> <strong>Echemos un vistazo a las diversas ventajas de Altibase a continuación:</strong> </p> <ul> <li>De uso gratuito.</li> <li>Menores costos de mantenimiento.</li> <li>Un DBMS de código abierto que ofrece una funcionalidad de fragmentación de vanguardia.</li> <li>100% libre de infracción de propiedad intelectual.</li> <li>Ofrece un conjunto de funciones rico y confiable.</li> <li>Fácil migración de habilidades y código SQL.</li> <li>Muy flexible y fácil de usar.</li> <li>Alto rendimiento ((más de 100.000 transacciones por segundo) en comparación con otras bases de datos residentes en disco como Oracle.</li> <li>Baja latencia e indexación eficiente.</li> <li>Tiempos de respuesta predecibles y bajos (escala de microsegundos).</li> <li> <a href='/database-testing-complete-guide-why'>Compatible con ACID</a> .</li> <li>Cumple con ANSI SQL.</li> <li>Reduce el costo de hardware y software a medida que obtiene DBMS en memoria y en disco en un solo producto.</li> <li>Al ser relacional, compatible con ACID y SQL, Altibase puede sustituir o trabajar en conjunto con Oracle y otras bases de datos heredadas.</li> <li>La migración de otras bases de datos heredadas a Altibase es significativamente menos complicada. También reduce el DBA y los gastos de implementación.</li> </ul> <h3><span id='Limitations'><span style='color: #ff6600;'>Limitaciones</span></span></h3> <p>Aunque hay varias ventajas de Altibase, también existen ciertas limitaciones.</p><blockquote style="text-align:left;text-transform:capitalize"><a href="/top-60-networking-interview-questions">ingeniero de red preguntas de la entrevista 250 + preguntas y respuestas explicadas pdf</a>
+</blockquote> <p> <strong>Son:</strong> </p> <ul> <li>No se admiten índices globales.</li> <li>No es compatible con el servidor y el cliente para Windows.</li> <li>La función de transferencia de datos de DataPort no es compatible a partir de la versión reciente.</li> <li>Actualmente, no tiene su propia herramienta de administración de GUI como la que tiene Oracle. Sin embargo, puede utilizar cualquier utilidad de terceros si necesita una GUI.</li> <li>No es ideal para productos de datos, pero se puede utilizar para mercados de datos.</li> <li>Todavía no es compatible con el acceso móvil.</li> </ul> <h3><span id='Altibase_Integrations'><span style='color: #ff6600;'>Integraciones Altibase</span></span></h3> <p> <strong>A continuación se incluye la lista de herramientas que se integran con Altibase:</strong> </p> <ul> <li>Resbaloso</li> <li>Redash</li> <li>Knex.js</li> <li>Backend</li> <li>Vertica</li> <li>QlikView</li> <li>Neto</li> </ul> <h2><span id='Conclusion'>Conclusión</span></h2> <p>Altibase es un RDBMS híbrido de alto rendimiento y es una base de datos de código abierto de nivel empresarial que es de uso gratuito.</p> <p>Ha ayudado a muchos clientes a emplear tanto el disco como la RAM como métodos de almacenamiento. Proporciona un completo cumplimiento de ACID con un amplio conjunto de funciones.</p> <p> <strong>=> Puedes <a href='http://altibase.com/resources/free-download/' target='_blank' rel='nofollow noopener'>descargue esta base de datos gratuita de código abierto desde aquí</a> y pruébalo.</strong> </p> <p> <em> <strong>¡¡Intenta compartir tus experiencias en la sección de comentarios a continuación !!</strong> </em> </p> <span id='tve_leads_end_content' style='display: block; visibility: hidden; border: 1px solid transparent;'></span> <h3><span id='Recommended_Reading'>Lectura recomendada</span></h3> <ul class='rp4wp-posts-list'> <li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  <a href='/database-testing-with-jmeter'>Prueba de base de datos con JMeter</a>  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  <a href='/mongodb-create-database-backup'>MongoDB Create Database Backup</a>  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  <a href='/mongodb-create-database-tutorial'>Tutorial de creación de base de datos de MongoDB</a>  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  Formas sistemáticas de probar la base de datos Oracle para el procesamiento de memoria, espacio y CPU  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  <a href='/top-10-database-design-tools-build-complex-data-models'>Las 10 mejores herramientas de diseño de bases de datos para crear modelos de datos complejos</a>  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  <a href='/how-test-oracle-database'>Cómo probar la base de datos Oracle</a>  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  Rendimiento de MongoDB: rendimiento de bloqueo, fallos de página y creación de perfiles de base de datos  </li><li class='rp4wp-col rp4wp-col-first rp4wp-col-last'>  <a href='/mongodb-database-profiler'>Generador de perfiles de base de datos MongoDB para supervisar consultas y rendimiento</a>  </li> </ul> 
+										
+									 </article>
+									 
+									 
+								</div>
+								<div class="end_article"></div>
+									<div id="array" data=
+					//spa.myservername.com/data-migration-testing-tutorial,//spa.myservername.com/validate-oracle-rman-backup,//spa.myservername.com/database-crud-testing-through-ui-with-sample-test-cases,//spa.myservername.com/types-migration-testing,//spa.myservername.com/simple-approach-xml-database-testing,//spa.myservername.com/oracle-real-application-testing-solution-test-oracle-db-before-moving-production,//spa.myservername.com/database-testing-complete-guide-why,//spa.myservername.com/how-perform-etl-testing-using-informatica-powercenter-tool,//spa.myservername.com/how-perform-backend-testing,//spa.myservername.com/testing-best-practices,//spa.myservername.com/etl-vs-db-testing-closer-look-etl-testing-need,//spa.myservername.com/an-excellent-way-data-testing-using-xml-technologies,//spa.myservername.com/180-web-application-testing-example-test-cases,//spa.myservername.com/altibase-open-source-relational-database-review,//spa.myservername.com/etl-testing-data-warehouse-testing-tutorial,//spa.myservername.com/database-testing/,//spa.myservername.com/how-test-oracle-database,>
+				</div>
+<!--UNLIM-->
+<script>	
+window.onload = function() {
+	urls = jQuery('#array').attr('data').split(',');
+	console.log('urls=',urls[0],urls[10],urls[1]);
+	atr= -1;
+	busy = false;	
+	
+	//var target = '#end_article';
+	var $win = $(window);
+	$win.on('scroll', unlim);
+	$(document.body).on('touchmove', unlim);
+	
+	function unlim(){
+		var wt = $(window).scrollTop();
+		var wh = $(window).height();
+		var et = $('.end_article').offset().top;
+		var eh = $('.end_article').outerHeight();
+		var dh = $(document).height();   
+		if (wt + wh >= et || wh + wt == dh || eh + et < wh){
+			console.log('busy = ', busy);
+			if(!busy){
+				busy = true;
+				jQuery('.last-art').removeClass('last-art');
+				jQuery('.end_h1').removeClass('end_h1');
+				atr=atr+1;
+				get_url=urls[atr] + " .last-art";
+				get_h1=urls[atr] + " .h1_article";
+				jQuery('.end_article').load(get_url);
+				setTimeout(function(){
+					jQuery('.last-art').prepend("<div class='end_h1'></div>");
+					jQuery('.end_h1').load(get_h1);
+					jQuery('.last-art').unwrap();
+					id = jQuery('.last-art').attr('id');
+					//console.log('id = ',id);
+					jQuery('#'+id).after(jQuery("<div class='end_article'>"));
+					busy = false;
+					var mLazyLoad = new LazyLoad({elements_selector: "[lazy='lazy']"});
+				}, 1000);	
+				jQuery('.last-art').removeClass('last-art');
+				jQuery('.end_h1').removeClass('end_h1');
+				try {
+					history.pushState(null, null, urls[atr]);
+				return;
+				}catch(e) {}
+			};
+		}
+	}
+}
+</script>				
+<!--unlim-->
+							</div>
+						</div>
+					</div>
+				</div>
+			<div id="img_null"></div>
+<div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
+     <aside class="sidebar">
+		<div id="eronment_recentnews1-2" class="mrside sidebar blog-sidebar widget sidebar-widget widget_eronment_recentnews1 ">
+		<div class="widget-inner">		
+        <!-- Popular Posts -->
+        <div class="popular-posts">
+            <div class="sidebar-title"><h2>Artículos De Interés</h2></div>            
+            
+			<div class="text">
+				 <a href="/remedy-is-opening-new-studio-sweden-119269">Remedy abre un nuevo estudio en Suecia</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/one-azure-striker-gunvolt-2-boss-sounds-like-ass-rock-117903">Un jefe de Azure Striker Gunvolt 2 suena como 'Ass Rock' y no puedo dejar de reír</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/resena-xenoblade-chronicles-3">Reseña: Xenoblade Chronicles 3</a> 
+			</div>
+			 <br>
+            <div class="text">
+				 <a href="/here-are-official-pokemon-dialga-119723">Aquí están los modelos de papercraft oficiales de Pokémon Dialga y Palkia.</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/do-you-remember-comix-zone">¿Te acuerdas ?: Comix Zone</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/review-silent-hill-book-memories">Reseña: Silent Hill: Book of Memories</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/borderlands-3s-new-patch">Nuevo parche de Borderlands 3: Amara corrió demasiado rápido, Jabber Jabber de FL4K menos</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/review-gundam-breaker-3">Revisión: Gundam Breaker 3</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/killing-floor-2s-incineraten-detonate-update-feels-damn-good">La actualización Incinerate 'N Detonate de Killing Floor 2 se siente muy bien</a> 
+			</div>
+			 <br><div class="text">
+				 <a href="/5-snes-games-that-curb-stomped-my-arse-118936">5 juegos de SNES que me pisotearon el trasero</a> 
+			</div>
+			 <br>
+        </div>
+        
+		</div>
+		</div>
+		
+		<div id="categories-3" class="mrside sidebar blog-sidebar widget sidebar-widget widget_categories ">
+		 <div class="widget-inner">
+			<div class="sidebar-title">
+				<h2>Categoría</h2>
+			</div>
+			<ul>
+				<li id="menu-item-1611771" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1611771 dropdown">
+										 <a title="Juegos Raros" href="/weird-games/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Juegos Raros</a> 
+									</li><li id="menu-item-1612124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612124 dropdown">
+										 <a title="El Gigante" href="/behemoth/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">El Gigante</a> 
+									</li><li id="menu-item-1612135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612135 dropdown">
+										 <a title="Mario" href="/mario/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Mario</a> 
+									</li><li id="menu-item-1612287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612287 dropdown">
+										 <a title="3Ds" href="/3ds/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">3Ds</a> 
+									</li><li id="menu-item-1612117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1612117 dropdown">
+										 <a title="Sistema Legal" href="/legal-system/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Sistema Legal</a> 
+									</li>
+			</ul>
+		 </div>
+		</div>				
+	</aside>
+</div>						            
+			</div>
+		</div>
+	</div>
+
+<footer class="main-footer footer-style-twox">
+		<div class="auto-container">
+            			<div class="widgets-section">
+            	<div class="row clearfix">
+                	<div id="text-2" class="mrfooter col-md-6 col-sm-4 footer-column footer-widget widget_text">			<div class="textwidget"><div class="footer-widget links-widget">
+                                	<h2>Artículos De Interés</h2>
+                                    <div class="widget-content">
+										<ul class="list"> <li><a href="/how-open-swf-file">cómo ejecutar un archivo .swf</a>
+</li><li><a href="/complete-guide-firewall">cómo configurar un firewall en una red</a>
+</li><li><a href="/doubly-linked-list-data-structure-c-with-illustration">lista doblemente enlazada clase c ++</a>
+</li><li><a href="/eclipse-c-how-install">eclipse ide para c / c ++</a>
+</li>
+										
+                                        </ul>
+                                    </div>
+                                </div></div>
+		</div><div id="text-3" class="mrfooter col-md-6 col-sm-4 footer-column footer-widget widget_text">			<div class="textwidget"><div class="footer-widget links-widget">
+                                	<h2>La Elección Del Editor</h2>
+                                    <div class="widget-content">
+										 <article class="post">
+											<div class="text">
+												<h5> <a href="/severed-is-getting-physical-vita-release-before-sony-nukes-worldwide-physical-vita-releases-from-planet-120498">Severed obtendrá un lanzamiento físico de Vita antes de que Sony elimine los lanzamientos físicos de Vita en todo el mundo.</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/ubisoft-announces-their-new-cloud-based-development-tech-118384">Ubisoft anuncia su nueva tecnología de desarrollo basada en la nube, Scalar</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/games-time-forgot-star-wars-117895">Juegos que el tiempo olvidó: Star Wars (el juego de arcade de 1983)</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/rainbow-six-siege-doktors-curse-features-demon-frost">Rainbow Six Siege: Doktor's Curse presenta a Demon Frost y mi mundo ha alcanzado su punto máximo</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/review-castlevania-lords-shadow-mirror-fate">Reseña: Castlevania: Lords of Shadow - Mirror of Fate</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/review-stela">Revisión: estela</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/review-strike-vector-ex">Revisión: Strike Vector EX</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/aliens-colonial-marines-is-solo-cooperative-hobby">Aliens: Colonial Marines es un pasatiempo cooperativo en solitario</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/the-memory-card-93-language-barrier">La tarjeta de memoria. 93: barrera del idioma</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/bloodstained-dlc-development-is-still-happening-118493">El desarrollo de DLC manchado de sangre todavía está ocurriendo, el estudio proporciona una actualización</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/postman-collections-import">Colecciones de cartero: importar, exportar y generar muestras de código</a> </h5>
+											</div>
+										</article> <article class="post">
+											<div class="text">
+												<h5> <a href="/my-god-indiana-jones-jibanyan-is-amazing-120655">Dios mío, Indiana Jones Jibanyan es increíble</a> </h5>
+											</div>
+										</article>    
+                                    </div>
+                                </div></div>
+		</div>               </div>
+            </div>
+            			
+			<div class="footer-bottom clearfix">
+                <div class="pull-left">
+                    <div class="copyright">
+						<p>© Copyright  <a href="//cs.myservername.com/">myservername.com</a>  2022. All right reserved.&nbsp;&nbsp;&nbsp;</p>       					
+					</div>                             
+                </div>				                   
+            </div>                                     
+        </div>                                         
+    </footer>
+</div>
+</div>
+<div class="scroll-to-top scroll-to-target" data-target="html"><span>^</span></div>
+
+<script src="https://myservername.com/template/js/jquery_006.js"></script>
+<script src="https://myservername.com/template/js/jquery-migrate.js"></script>
+
+<script src="https://myservername.com/template/js/cart-fragments.js"></script>
+<script src="https://myservername.com/template/js/core.js"></script>
+
+<script src="https://myservername.com/template/js/bootstrap.js"></script>
+
+<script src="https://myservername.com/template/js/appear.js"></script>
+
+<script src="https://myservername.com/template/js/mixitup.js"></script>
+<script src="https://myservername.com/template/js/script.js"></script>
+
+<script src="https://myservername.com/template/js/wp-embed.js"></script>
+<script type="text/javascript" src="https://s.skimresources.com/js/192355X1673064.skimlinks.js"></script></body></html>

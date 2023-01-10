@@ -1,0 +1,19 @@
+body{
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 10px;
+    background-color: salmon;
+    background-image: url("../images/bg-image.png");
+    background-size: 100px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    /* background-position: center top; */
+}
+
+h1{
+    background-color: rgba(128, 128, 0, 0.5);
+}
+
+a{
+    background-color: blue;
+    color: #fff;
+}

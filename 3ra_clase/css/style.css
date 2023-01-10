@@ -1,0 +1,73 @@
+body{                                           /*Selector Etiqueta*/ 
+    background-color: aqua;
+    color: brown;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    color: white;
+}
+
+.special-p{
+    color: black;
+    font-family: italic;
+}
+
+.italic-text{
+    font-style: italic;
+}
+
+.salmon-text{
+    color: salmon;
+}
+
+a:link{
+    background-color: black;
+    color: white;
+}
+
+a:visited{
+    background: gray;
+    color: green;
+}
+
+a:hover{
+    background: red;
+    color: black;
+}
+/*
+
+.introduction{                                  /*Selector Clase
+    background-color: blue; 
+}
+
+.description{
+    color:red;
+}
+
+div.introduction{
+    color: brown;
+}
+
+#titles{                                        /*Selector Id
+    color: black;
+}
+
+p#pepito{
+    color: orange;
+}
+
+*/
+
+/*Pseudo clases: 
+                Selectores que se le aplican a otros selectores
+                que previamente ya existen.
+                Modificar estados de una elemento
+
+    a:link{...}     Etiqueta que no ha sido visitada en su estado normal    
+    a:visited{...}  Si ya fue visitada va a tomar esta regla
+    a:hover{...}    Cambio al pasar cursor por encima
+    a:active{...}   Presiono el enlace, o hago click en el
+    a:focus{...}    Teclas del teclado me muevo por la pagina
+
+*/

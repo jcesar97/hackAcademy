@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tema 1 - Etiqueta form, atributos action y method</title>
+</head>
+
+<body>
+    <h2>Formulario de contacto</h2>
+    <form action="https://formspree.io/f/mnqyqdzo" method="post">
+        <div>
+            <label for="fullName">Nombre y apellidos:</label>
+            <input id="fullName" type="text" name="fullName" placeholder="Escribe tu nombre y apellidos" />
+        </div>
+        <div>
+            <label for="email">Correo electronico:</label>
+            <input id="email" type="email" name="email" placeholder="user@email.com"> 
+        </div>
+        <div>
+            <label for="country">Elija un pais</label>
+            <select name="country" id="country">
+                <option value="ar">Argentina</option>
+                <option value="uy">Uruguay</option>
+                <option value="br">Brasil</option>
+                <option value="co">Colombia</option>
+            </select>
+        </div>
+        <div>
+            <label for="comment">Tus comntarios</label><br>
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <p>Sabes HTML</p>
+            <input type="radio" id="know-html_Op1" name="know-html" value="Y">
+            <label for="know-html_Op1">Si</label>
+            <input type="radio" id="know-html_Op2" name="know-html" value="N">
+            <label for="know-html_Op2">No</label>
+        </div>
+
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+
+</html>
